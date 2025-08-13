@@ -5,7 +5,9 @@
       "parameters": {
         "rule": {
           "interval": [
-            {}
+            {
+              "triggerAtHour": 7
+            }
           ]
         }
       },
@@ -13,7 +15,7 @@
       "typeVersion": 1.2,
       "position": [
         -1648,
-        -144
+        -560
       ],
       "id": "19664b89-e763-4608-9f6b-fb703f74a451",
       "name": "Schedule Trigger"
@@ -87,8 +89,8 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        -1440,
-        -144
+        -1328,
+        -576
       ],
       "id": "498dcfb8-ecb7-49b9-a48c-f543b8d45a72",
       "name": "Search records",
@@ -141,8 +143,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1168,
-        -160
+        -1008,
+        -592
       ],
       "id": "3d847edc-5747-496f-b56b-1ed3117a5656",
       "name": "Chuyển đổi dữ liệu"
@@ -701,7 +703,7 @@
             {
               "id": "18045f67-6c29-4a8f-b388-9a3fa2f76c9a",
               "leftValue": "={{ $json.currentDateTimeVN }}",
-              "rightValue": "={{ $json.emailSendDateTime }}",
+              "rightValue": "={{ new Date(new Date($json.currentDateTimeVN.split(', ')[0].split('/').reverse().join('-') + 'T' + $json.currentDateTimeVN.split(', ')[1]).getTime() + 86400000).toLocaleDateString('vi-VN') + ', 00:00:00' }}\n",
               "operator": {
                 "type": "string",
                 "operation": "equals"
@@ -715,8 +717,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -384,
-        -128
+        -192,
+        -176
       ],
       "id": "2a7a79ca-72d1-43a4-9560-f31ad44259ac",
       "name": "If1"
@@ -888,11 +890,11 @@
       ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "f17695d9-ba36-4771-af83-fad6d72bf03e",
+  "versionId": "f728ff81-c6d7-4948-9c99-af5fc19f81af",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "94a383c02457267bcc44878635a0fa02b7d3206c5479bfc8890faa812e2bbd97"
